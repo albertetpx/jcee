@@ -61,5 +61,6 @@ def eliminarFestivo():
             return "Holiday could not be removed."
 
 app.config['JSON_AS_ASCII'] = False
-app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.run(debug=True)
+# app.config['TEMPLATES_AUTO_RELOAD'] = True
+# app.run(debug=True)
+app.run()
