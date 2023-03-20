@@ -35,9 +35,9 @@ def crearFestivo():
     if request.method == 'POST':
         name = request.form.get("name")
         date = request.form.get("date")
-        print(name,date)
+        type = request.form.get("type")
         try:
-            db.crearFestivo(date,name,'')
+            db.crearFestivo(date,name,type)
             holidays  = db.consultarFestivos()
             print(holidays)
             return jsonify(holidays)
@@ -50,7 +50,6 @@ def eliminarFestivo():
     if request.method == 'POST':
         name = request.form.get("name")
         date = request.form.get("date")
-        print(name,date)
         try:
             db.eliminarFestivo(date,name)
             holidays  = db.consultarFestivos()
@@ -61,6 +60,5 @@ def eliminarFestivo():
             return "Holiday could not be removed."
 
 app.config['JSON_AS_ASCII'] = False
-# app.config['TEMPLATES_AUTO_RELOAD'] = True
-# app.run(debug=True)
-# app.run()
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.run(debug=True)

@@ -15,7 +15,7 @@ def initBD():
 def consultarFestivos():
     bd = sqlite3.connect("db/jcee.db")
     cursor = bd.cursor()
-    query = 'SELECT date,name,type FROM festivos;'
+    query = 'SELECT date,name,type FROM festivos ORDER BY date ASC;'
     cursor.execute(query)
     results = cursor.fetchall()
     bd.close()

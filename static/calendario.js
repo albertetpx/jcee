@@ -30,6 +30,7 @@ function updateHolidayList(holidayList) {
     for (let holiday of holidayList) {
         let option = document.createElement("option");
         option.value = holiday[0];
+        option.classList.add(holiday[2]);
         option.innerHTML = `${holiday[0]}-${holiday[1]}`
         holidaysDroplist.append(option);
     }
@@ -38,8 +39,6 @@ function updateHolidayList(holidayList) {
     // close modal
     closeAddHolidayModal();
     closeRemoveHolidayModal();
-
-
     return
 }
 
@@ -91,7 +90,8 @@ function addHolidayRequest() {
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     let name = document.getElementById("addHolidayFormName").value;
     let date = document.getElementById("addHolidayFormDate").value;
-    payload = `name=${name}&date=${date}`
+    let type = document.getElementById("addHolidayFormType").value;
+    payload = `name=${name}&date=${date}&type=${type}`
     xmlhttp.send(payload);
 }
 
@@ -243,6 +243,7 @@ function initHolidays() {
     let oldHolidays = Array.from(document.getElementsByClassName("holiday"));
     for (let holiday of oldHolidays) {
         holiday.classList.remove("holiday");
+        holiday.classList.remove("nonLectiveDay");
     }
 
     let holidays = Array.from(document.getElementById("holidays").children);
