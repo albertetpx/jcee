@@ -1,0 +1,477 @@
+/* CSS Reset */
+html,body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+
+/* LAYOUT STYLES **********************************************************************************/
+body{
+    width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 15% auto 5%;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+header{
+    grid-area: header;
+    background-color: palevioletred;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header h1{
+    color: black;
+    font-size: 36px;
+}
+
+header img{
+    height: 10vh;
+}
+
+main{
+    grid-area: main;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2vh;
+    width: 100vw;
+}
+
+footer{
+    grid-area: footer;
+    background-color: violet;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+footer p{
+    font-size: 10px;
+    margin-right: 3vw;
+}
+
+/* MENU STYLES ************************************************************************************/
+#menu{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+}
+
+#practiceControls{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: self-start;
+    row-gap: 1vh;
+    margin-bottom: 3vh;
+    margin-right: 3vw;
+    width: 75%;
+}
+
+
+#practiceControls fieldset:nth-of-type(1){
+    width: 100%;
+    border-radius: 8px;
+}
+
+#practiceControls fieldset:nth-of-type(2){
+    width: 75%;
+    border-radius: 8px;
+}
+
+#practiceControls fieldset legend{
+    font-size: 12px;
+}
+
+#practiceControls fieldset label{
+    font-size: 12px;
+}
+
+#practiceControls input[type="date"]{
+    width: 40%;
+}
+
+#practiceControls input[type="text"]{
+    width: 15%;
+}
+
+#controlsAcord{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#controlsAcord .inici{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#controlsAcord .final{
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#controlsAcord .final #calculateButton{
+    color: black;
+}
+
+#controlsAcord .final #calculateButton:hover{
+    color: #B2C339;
+    cursor: pointer;
+}
+
+#controlsAcord input[type="number"]{
+    width: 6%;
+}
+
+#controlsHorari{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#controlsHorari input[type="number"]{
+    width: 60%;
+}
+
+#controlsHorari label{
+    margin-right: 5%;
+}
+
+#calendarControls{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendarControls{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#calendarMenuButton{
+    margin-top: 15%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+
+#calendarMenuButton:hover{
+    color: #B2C339;
+}
+
+#calendarControls fieldset{
+    width: 75%;
+    border-radius: 8px;
+}
+
+#calendarControls fieldset legend{
+    font-size: 12px;
+}
+
+#calendarControls fieldset label{
+    font-size: 12px;
+}
+
+#calendarControls input[type="text"]{
+    width: 60%;
+}
+
+/* CALENDAR GRID STYLES ***************************************************************************/
+
+#calendars{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    row-gap: 2%;
+    width: 95%;
+}
+
+#calendarA, #calendarB{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 2vh;
+    height: auto;
+}
+
+#calendarB{
+    display: none;
+}
+
+.calendar-month{
+    grid-area: calendar-month;
+    font-size: 10px;
+    width: 15%;
+    min-width: 150px;
+    aspect-ratio: 4/3;
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 80%;
+    grid-template-areas: "calendar-name"
+                         "calendar-grid";
+    text-align: center;
+    /* padding: 0.5%; */
+    border-radius: 8px;
+}
+
+/* .calendar-month h3{
+} */
+
+.calendar-grid, .calendarB-grid{
+    grid-area: calendar-grid;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+}
+
+.calendar-cell{
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.calendar-cell.nonLectiveDay{
+    background-color: cyan;
+}
+
+.calendar-cell.holiday{
+    background-color: green;
+    cursor: default;
+}
+
+.calendar-cell.summerHoliday{
+    background-color: brown;
+    cursor: default;
+}
+
+.calendar-cell.weekend{
+    background-color: grey;
+    cursor: default;
+}
+
+/* .calendar-cell.xmasHoliday{
+    background-color: lightgrey;
+}
+
+.calendar-cell.easterHoliday{
+    background-color: lightgrey;
+} */
+
+.calendar-cell.practiceDay{
+    background-color: blue;
+}
+
+.calendar-cell.practiceMaxDay{
+    background-color: red;
+}
+
+.calendar-cell.practiceStartDay{
+    border: 2px solid blue;
+}
+
+#calendarToggle button{
+    width: 2vw;
+    aspect-ratio: 1;
+    background-color: violet;
+    border: 0px;
+    border-radius: 50%;
+    margin-top: 1vh;
+    background-image: url('right.png');
+    background-size: 2vw;
+}
+
+/* MODAL STYLES ***********************************************************************************/
+.calendarMenuModal{
+    display:none;
+    position: absolute;
+    top: 20vh;
+    left: 20vw;
+    background-color: white;
+    width: 50vw;
+    height: auto;
+}
+
+.calendarMenuForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1vh;   
+}
+
+.calendarMenuForm .addHoliday{
+    display: inline;
+    cursor: pointer;
+}
+
+.calendarMenuForm .addHoliday:hover{
+    color: #B2C339;
+}
+
+.calendarMenuForm .removeHoliday{
+    display: inline;
+    cursor: pointer;
+}
+
+.calendarMenuForm .removeHoliday:hover{
+    color: #B2C339;
+}
+
+.addHolidayModal{
+    display:none;
+    position: absolute;
+    top: 20vh;
+    left: 20vw;
+    background-color: white;
+    width: 50vw;
+    height: auto;
+}
+
+.addHolidayModal .addHolidayForm{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.addHolidayModal .addHolidayForm input[type="text"]{
+    width: 70%;
+}
+
+.addHolidayModal .addHolidayForm input[type="submit"]{
+    width: 40%;
+    background-color: palevioletred;
+    cursor: pointer;
+    border: none;
+}
+
+.removeHolidayModal{
+    display:none;
+    position: absolute;
+    top: 20vh;
+    left: 20vw;
+    background-color: white;
+    width: 50vw;
+    height: auto;
+}
+
+.removeHolidayModal .removeHolidayForm{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.removeHolidayModal .remremoveHolidayForm input[type="text"]{
+    width: 70%;
+}
+
+.removeHolidayModal .removeHolidayForm input[type="submit"]{
+    width: 40%;
+    background-color: palevioletred;
+    cursor: pointer;
+    border: none;
+}
+
+.closeFormButton{
+    width: 10%;
+    aspect-ratio: 1;
+    color: black;
+    background-color: white;
+    align-self: self-end;
+    cursor: pointer;
+}
+
+#page-mask {
+    display: none;
+    background: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  /* Llegenda */
+  .legend{
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 5%;
+    width: 70%;
+    align-self: end;
+  }
+
+  .legendTitle{
+    font-size: 12px;
+  }
+
+  .legendBox{
+    display: flex;
+    flex-direction: row;
+    max-width: 15%;
+    height: 2vh;
+    column-gap: 2%;
+    white-space: nowrap;
+  }
+
+  .legendColor{
+    width: 1vw;
+    aspect-ratio: 1;
+    border: 1px black solid;
+
+  }
+
+  .legendLabel{
+    width: fit-content;
+    font-size: 11px;
+  }
+
+  .legendFinde{
+    background-color: gray;
+  }
+
+  .legendEstiu{
+    background-color: brown;
+  }
+
+  .legendNacional{
+    background-color: green;
+  }
+
+  .legendNoLectiu{
+    background-color: cyan;
+  }

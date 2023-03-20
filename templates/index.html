@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <header>
+        <h1><i>JCee</i> - Calculadora de pràctiques</h1>
+        <img src="{{ url_for('static', filename='etpx.png') }}">
+    </header>
+    <main>
+        <div id="menu">
+            <div id="practiceControls">
+                <fieldset>
+                    <legend>Acord de pràctiques</legend>
+                    <div id="controlsAcord">
+                        <div class="inici">
+                            <label>Inici: </label>
+                            <input type="date" id="practiceStart" value="" />
+
+                            <label>Hores totals: </label><input type="text" id="practiceHours" />
+                        </div>
+
+                        <div class="final">
+                            <label>Fi: </label><input type="date" readonly id="practiceEnd" />
+                            <label>Hores pendents: </label><input type="text" readonly id="pendingHours" />
+                            <div id="calculateButton">
+                                <i class="fa fa-calculator fa fa-xl" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Horari de pràctiques</legend>
+                    <div id="controlsHorari">
+                        <div><label>DL:</label><input type="number" name="" id="horariDL" value="5" step="0.25" /></div>
+                        <div><label>DM:</label><input type="number" name="" id="horariDM" value="5" step="0.25" /></div>
+                        <div><label>DX:</label><input type="number" name="" id="horariDX" value="5" step="0.25" /></div>
+                        <div><label>DJ:</label><input type="number" name="" id="horariDJ" value="5" step="0.25" /></div>
+                        <div><label>DV:</label><input type="number" name="" id="horariDV" value="5" step="0.25" /></div>
+                    </div>
+                </fieldset>
+
+            </div>
+            <div id="calendarControls">
+                <fieldset>
+                    <legend>Calendari escolar</legend>
+                    <div class="calendarControls">
+                        <div>
+                            <label>Curs: </label><input type="text" value="2022-2023" readonly id="schoolYear" />
+                        </div>
+                        <div id="calendarMenuButton">
+                            <i class="fa-regular fa-calendar-check fa-xl"></i>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
+        <div id="calendars">
+            <div id="calendarA">
+                {% for month in periode[0] %}
+                <div class="calendar-month" id="calendar-{{month}}">
+                    <h3>{{month}}</h3>
+                    <div class="calendar-grid" id="calendar-grid-{{loop.index0}}">
+                        {% for day in ['DL','DM','DX','DJ','DV','DS','DG'] %}
+                        <div class="calendar-cell day-heading">{{day}}</div>
+                        {% endfor %}
+                        {% for week in range(6) %}
+                        {% for day in range(7) %}
+                        <div class="calendar-cell"></div>
+                        {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div id="calendarB">
+                {% for month in periode[1] %}
+                <div class="calendar-month" id="calendar-{{month}}">
+                    <h3>{{month}}</h3>
+                    <div class="calendarB-grid" id="calendar-grid-{{loop.index0}}">
+                        {% for day in ['DL','DM','DX','DJ','DV','DS','DG'] %}
+                        <div class="calendar-cell day-heading">{{day}}</div>
+                        {% endfor %}
+                        {% for week in range(6) %}
+                        {% for day in range(7) %}
+                        <div class="calendar-cell"></div>
+                        {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="legend">
+            <div class="legendTitle">Dies inhàbils:</div>
+            <div class="legendBox">
+                <div class="legendColor legendFinde"></div>
+                <div class="legendLabel">Cap de setmana</div>
+            </div>
+            <div class="legendBox">
+                <div class="legendColor legendEstiu"></div>
+                <div class="legendLabel">Estiu</div>
+            </div>
+            <div class="legendBox">
+                <div class="legendColor legendNacional"></div>
+                <div class="legendLabel">Festiu nacional</div>
+            </div>
+            <div class="legendBox">
+                <div class="legendColor legendNoLectiu"></div>
+                <div class="legendLabel">No lectiu</div>
+            </div>
+        </div>
+        <div id="calendarToggle">
+            <!-- <button id="calendarToggleButton"></button> -->
+        </div>
+        <!-- MODALS -->
+        <!-- To do: page-masking when modal open -->
+        <div id="page-mask"></div> 
+        <div class="calendarMenuModal">
+            <div class="calendarMenuForm">
+                <h4>Configura el calendari escolar</h4>
+                <div><label>Inici: </label><input type="date" value="{{schoolYear[0]}}" readonly id="schoolYearStart" />
+                </div>
+                <div><label>Fi: </label><input type="date" value="{{schoolYear[1]}}" readonly id="schoolYearEnd" />
+                </div>
+                <div>
+                    <label>Festius: </label><select id="holidays">
+                        {% for holiday in holidays %}
+                            {% if holiday[2] == 'national'%}
+                            <option value="{{holiday[0]}}" class="national">{{holiday[0]}}-{{holiday[1]}}</option>
+                            {% else %}
+                            <option value="{{holiday[0]}}" class="school">{{holiday[0]}}-{{holiday[1]}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <div class="addHoliday" id="addHolidayButton">
+                        <i class="fa-regular fa-calendar-plus"></i>
+                    </div>
+                    <div class="removeHoliday" id="removeHolidayButton">
+                        <i class="fa-regular fa-calendar-minus"></i>
+                    </div>
+                </div>
+                <div><label>Inici Nadal: </label><input type="date" readonly id="xmasStart" value="{{xmas[0]}}" /></div>
+                <div><label>Fi Nadal: </label><input type="date" readonly id="xmasEnd" value="{{xmas[1]}}" /></div>
+                <div><label>Inici Semana Santa: </label><input type="date" readonly id="easterStart" value="{{easter[0]}}" /></div>
+                <div><label>Fi Semana Santa: </label><input type="date" readonly id="easterEnd" value="{{easter[1]}}" /></div>
+                <div class="closeFormButton" id="closeCalendarMenuButton">
+                    <i class="fa-solid fa-xmark fa-xl"></i>
+                </div>
+            </div>
+        </div>
+        <div class="addHolidayModal">
+            <div class="addHolidayForm">
+                <h4>Afegeix un nou festiu</h4>
+                <input type="text" name="name" id="addHolidayFormName">
+                <input type="date" name="date" id="addHolidayFormDate">
+                <input type="submit" value="Afegeix" id="addHolidaySubmitButton">
+                <div class="closeFormButton" id="closeAddHolidayButton">
+                    <i class="fa-solid fa-arrow-left fa-xl"></i>
+                </div>
+            </div>
+        </div>
+        <div class="removeHolidayModal">
+            <div class="removeHolidayForm">
+                <h4>Vols eliminar aquest festiu?</h4>
+                <input type="text" name="name" id="removeHolidayFormName" readonly>
+                <input type="date" name="date" id="removeHolidayFormDate" readonly>
+                <input type="submit" value="Elimina" id="removeHolidaySubmitButton">
+                <div class="closeFormButton" id="closeRemoveHolidayButton">
+                    <i class="fa-solid fa-arrow-left fa-xl"></i>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <p><b>AGE 2022 &copy;</b></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='calendario.js') }}"></script>
+</body>
+
+</html>
