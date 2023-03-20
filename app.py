@@ -7,6 +7,7 @@ Date: December 22
 
 import db.db as db
 from flask import Flask, render_template, request, jsonify
+import os
 
 # Secuencia principal
 # cal.crearFestivo('Constitución','2022-12-06','NAC')
@@ -60,5 +61,6 @@ def eliminarFestivo():
             return "Holiday could not be removed."
 
 app.config['JSON_AS_ASCII'] = False
-app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.run(debug=True)
+if os.getenv('RENDER') != True:
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.run(debug=True)
