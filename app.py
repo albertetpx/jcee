@@ -66,3 +66,5 @@ print(hostingMode)
 if hostingMode != True:
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(debug=True)
+else:
+    pass
