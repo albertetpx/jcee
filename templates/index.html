@@ -21,8 +21,8 @@
     <main>
         <div id="menu">
             <div id="practiceControls">
-                <fieldset>
-                    <legend>Acord de pràctiques</legend>
+                <div class="fieldset">
+                    <!-- <h4>Acord de pràctiques</h4> -->
                     <div id="controlsAcord">
                         <div class="inici">
                             <label>Inici: </label>
@@ -39,9 +39,9 @@
                             </div>
                         </div>
                     </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Horari de pràctiques</legend>
+                </div>
+                <div class="fieldset">
+                    <!-- <h4>Horari de pràctiques</h4> -->
                     <div id="controlsHorari">
                         <div><label>DL:</label><input type="number" name="" id="horariDL" value="5" step="0.25" /></div>
                         <div><label>DM:</label><input type="number" name="" id="horariDM" value="5" step="0.25" /></div>
@@ -49,23 +49,20 @@
                         <div><label>DJ:</label><input type="number" name="" id="horariDJ" value="5" step="0.25" /></div>
                         <div><label>DV:</label><input type="number" name="" id="horariDV" value="5" step="0.25" /></div>
                     </div>
-                </fieldset>
+                </div>
 
             </div>
             <div id="calendarControls">
-                <fieldset>
-                    <legend>Calendari escolar</legend>
-                    <div class="calendarControls">
-                        <div>
-                            <label>Curs: </label><input type="text" value="2022-2023" readonly id="schoolYear" />
-                        </div>
-                        <div id="calendarMenuButton">
-                            <i class="fa-regular fa-calendar-check fa-xl"></i>
-                        </div>
+                <h4>Calendari escolar</h4>
+                <div class="calendarControls">
+                    <div>
+                        <label>Curs: </label><input type="text" value="2022-2023" readonly id="schoolYear" />
                     </div>
-                </fieldset>
+                    <div id="calendarMenuButton">
+                        <i class="fa-regular fa-calendar-check fa-xl"></i>
+                    </div>
+                </div>
             </div>
-
         </div>
         <div id="calendars">
             <div id="calendarA">
@@ -127,7 +124,7 @@
         </div>
         <!-- MODALS -->
         <!-- To do: page-masking when modal open -->
-        <div id="page-mask"></div> 
+        <div id="page-mask"></div>
         <div class="calendarMenuModal">
             <div class="calendarMenuForm">
                 <h4>Configura el calendari escolar</h4>
@@ -138,11 +135,11 @@
                 <div>
                     <label>Festius: </label><select id="holidays">
                         {% for holiday in holidays %}
-                            {% if holiday[2] == 'national'%}
-                            <option value="{{holiday[0]}}" class="national">{{holiday[0]}}-{{holiday[1]}}</option>
-                            {% else %}
-                            <option value="{{holiday[0]}}" class="school">{{holiday[0]}}-{{holiday[1]}}</option>
-                            {% endif %}
+                        {% if holiday[2] == 'national'%}
+                        <option value="{{holiday[0]}}" class="national">{{holiday[0]}}-{{holiday[1]}}</option>
+                        {% else %}
+                        <option value="{{holiday[0]}}" class="school">{{holiday[0]}}-{{holiday[1]}}</option>
+                        {% endif %}
                         {% endfor %}
                     </select>
                     <div class="addHoliday" id="addHolidayButton">
@@ -154,8 +151,10 @@
                 </div>
                 <div><label>Inici Nadal: </label><input type="date" readonly id="xmasStart" value="{{xmas[0]}}" /></div>
                 <div><label>Fi Nadal: </label><input type="date" readonly id="xmasEnd" value="{{xmas[1]}}" /></div>
-                <div><label>Inici Semana Santa: </label><input type="date" readonly id="easterStart" value="{{easter[0]}}" /></div>
-                <div><label>Fi Semana Santa: </label><input type="date" readonly id="easterEnd" value="{{easter[1]}}" /></div>
+                <div><label>Inici Semana Santa: </label><input type="date" readonly id="easterStart"
+                        value="{{easter[0]}}" /></div>
+                <div><label>Fi Semana Santa: </label><input type="date" readonly id="easterEnd" value="{{easter[1]}}" />
+                </div>
                 <div class="closeFormButton" id="closeCalendarMenuButton">
                     <i class="fa-solid fa-xmark fa-xl"></i>
                 </div>

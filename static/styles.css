@@ -25,7 +25,7 @@ body{
 
 header{
     grid-area: header;
-    background-color: palevioletred;
+    background-color: #322E68;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -33,7 +33,7 @@ header{
 }
 
 header h1{
-    color: black;
+    color: #B2C339;
     font-size: 36px;
 }
 
@@ -43,7 +43,7 @@ header img{
 
 main{
     grid-area: main;
-    background-color: lightblue;
+    background-color: #929E43;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -54,7 +54,7 @@ main{
 
 footer{
     grid-area: footer;
-    background-color: violet;
+    background-color: #322E68;
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
@@ -72,33 +72,43 @@ footer p{
     width: 95%;
 }
 
+input{
+    background-color: #D6DF90;
+    border: 1px solid black;
+}
+
 #practiceControls{
     display: flex;
     flex-flow: column;
-    justify-content: center;
-    align-items: self-start;
-    row-gap: 1vh;
+    justify-content: start;
+    align-content: start;
+    row-gap: 4vh;
+    margin-top: 2vh;
     margin-bottom: 3vh;
     margin-right: 3vw;
     width: 75%;
 }
 
 
-#practiceControls fieldset:nth-of-type(1){
+#practiceControls .fieldset:nth-of-type(1){
     width: 100%;
     border-radius: 8px;
+    border: 1px solid #322E68;
+    padding: 1%;
 }
 
-#practiceControls fieldset:nth-of-type(2){
+#practiceControls .fieldset:nth-of-type(2){
     width: 75%;
     border-radius: 8px;
+    border: 1px solid #322E68;
+    padding: 1%;
 }
 
-#practiceControls fieldset legend{
+#practiceControls .fieldset h4{
     font-size: 12px;
 }
 
-#practiceControls fieldset label{
+#practiceControls .fieldset label{
     font-size: 12px;
 }
 
@@ -135,6 +145,7 @@ footer p{
 
 #controlsAcord .final #calculateButton{
     color: black;
+    display: inline-block;
 }
 
 #controlsAcord .final #calculateButton:hover{
@@ -162,44 +173,47 @@ footer p{
     margin-right: 5%;
 }
 
+/* *************************************************** */
+
 #calendarControls{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.calendarControls{
-    margin-top: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#calendarMenuButton{
-    margin-top: 15%;
-    margin-bottom: 3%;
-    cursor: pointer;
-}
-
-#calendarMenuButton:hover{
-    color: #B2C339;
-}
-
-#calendarControls fieldset{
-    width: 75%;
+    justify-content: start;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    width: 20%;
     border-radius: 8px;
+    border: 1px solid #322E68;
+    padding: 0%;
 }
 
-#calendarControls fieldset legend{
+#calendarControls h4{
     font-size: 12px;
 }
 
-#calendarControls fieldset label{
+.calendarControls{
+    padding-left: 2vw;
+    padding-right: 2vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.calendarControls label{
     font-size: 12px;
 }
 
 #calendarControls input[type="text"]{
     width: 60%;
+}
+
+#calendarMenuButton{
+    cursor: pointer;
+    display: inline;
+}
+
+#calendarMenuButton:hover{
+    color: #B2C339;
 }
 
 /* CALENDAR GRID STYLES ***************************************************************************/
@@ -242,6 +256,7 @@ footer p{
     text-align: center;
     /* padding: 0.5%; */
     border-radius: 8px;
+    background-color: #D6DF90;
 }
 
 /* .calendar-month h3{
