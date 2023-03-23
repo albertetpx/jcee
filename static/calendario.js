@@ -14,7 +14,7 @@ window.onload = function () {
     document.getElementById("removeHolidaySubmitButton").addEventListener('click', removeHolidayRequest);
     document.getElementById("closeAddHolidayButton").addEventListener('click', closeAddHolidayModal);
     document.getElementById("closeRemoveHolidayButton").addEventListener('click', closeRemoveHolidayModal);
-    document.getElementById("calendarMenuButton").addEventListener('click', displayCalendarMenuModal);
+    document.getElementById("calendarMenuButton").addEventListener('click', showCalendarConfirm);
     document.getElementById("closeCalendarMenuButton").addEventListener('click', closeCalendarMenuModal);
 }
 
@@ -40,6 +40,12 @@ function updateHolidayList(holidayList) {
     closeAddHolidayModal();
     closeRemoveHolidayModal();
     return
+}
+
+function showCalendarConfirm(){
+    if(confirm("Atenció, si vols fer canvis en el calendari, el càlcul actual de pràctiques es perdrà. Prem Cancel·lar si no vols que es perdi.")){
+        displayCalendarMenuModal();
+    }
 }
 
 function displayCalendarMenuModal() {
