@@ -32,6 +32,7 @@ function updateHolidayList(holidayList) {
         option.value = holiday[0];
         option.classList.add(holiday[2]);
         option.innerHTML = `${holiday[0]}-${holiday[1]}`
+        option.append(icon);    
         holidaysDroplist.append(option);
     }
     //refresh calendar

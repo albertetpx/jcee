@@ -216,6 +216,16 @@ input{
     color: #B2C339;
 }
 
+select option.national{
+    color: green;
+    font-weight: 600;
+}
+
+select option.school{
+    color: cyan;
+    font-weight: 600;
+  }
+
 /* CALENDAR GRID STYLES ***************************************************************************/
 
 #calendars{
@@ -259,9 +269,6 @@ input{
     background-color: #D6DF90;
 }
 
-/* .calendar-month h3{
-} */
-
 .calendar-grid, .calendarB-grid{
     grid-area: calendar-grid;
     display: grid;
@@ -273,6 +280,10 @@ input{
 .calendar-cell{
     border: 1px solid black;
     cursor: pointer;
+}
+
+.calendar-cell:hover{
+    border: 1.5px solid cyan;
 }
 
 .calendar-cell.nonLectiveDay{
