@@ -270,7 +270,7 @@ function initHolidays() {
 function initCalendar() {
 
     // TODO: BACKEND
-    let yearIni = 2022;
+    let yearIni = 2023;
     let initDate = `${yearIni}-09-01`;
     let initDay = new Date(initDate);
 
@@ -366,7 +366,7 @@ function initNextSchoolYear() {
 
 function initCalendarNextYear() {
     // TODO: BACKEND
-    let yearIni = 2023;
+    let yearIni = 2024;
     let initDate = `${yearIni}-09-01`;
     let initDay = new Date(initDate);
 

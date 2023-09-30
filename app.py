@@ -1,8 +1,8 @@
 """
 JCEE App for handling DUAL/FCT schedules
 Author: A.Guardiola
-Versión: Alfa
-Date: December 22
+Versión: Beta (calendar updates for schoolyear 2324)
+Date: September 23
 """
 
 import db.db as db
@@ -10,8 +10,6 @@ from flask import Flask, render_template, request, jsonify
 import os
 
 # Secuencia principal
-# cal.crearFestivo('Constitución','2022-12-06','NAC')
-# print(cal.esLaborable('2022-12-06'))
 app = Flask(__name__)
 
 # Database initialization
@@ -20,14 +18,14 @@ db.defaultHolidays()
 
 @app.route("/")
 def root():
-    currentYear=["Setembre 22","Octubre 22","Novembre 22","Desembre 22","Gener 23","Febrer 23",
-        "Març 23","Abril 23","Maig 23","Juny 23","Juliol 23","Agost 23"]
-    nextYear=["Setembre 23","Octubre 23","Novembre 23","Desembre 23","Gener 24","Febrer 24",
+    currentYear=["Setembre 23","Octubre 23","Novembre 23","Desembre 23","Gener 24","Febrer 24",
         "Març 24","Abril 24","Maig 24","Juny 24","Juliol 24","Agost 24"]
+    nextYear=["Setembre 24","Octubre 24","Novembre 24","Desembre 24","Gener 25","Febrer 25",
+        "Març 25","Abril 25","Maig 25","Juny 25","Juliol 25","Agost 25"]
     holidays =  db.consultarFestivos()
-    schoolYear = ('2022-09-01','2023-07-31')
-    xmas = ('2022-12-22','2023-01-08')
-    easter = ('2023-04-03','2023-04-10')
+    schoolYear = ('2023-09-01','2024-07-31')
+    xmas = ('2023-12-21','2024-01-07')
+    easter = ('2024-03-23','2024-04-01')
     return render_template("index.html", periode=(currentYear,nextYear),holidays=holidays,
         schoolYear=schoolYear,xmas=xmas,easter=easter)
 
