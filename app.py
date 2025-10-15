@@ -24,7 +24,7 @@ def root():
         "Març 27","Abril 27","Maig 27","Juny 27","Juliol 27","Agost 27"]
     holidays =  db.consultarFestivos()
     schoolYear = ('2025-09-01','2026-07-31')
-    xmas = ('2025-12-20','2026-01-07')
+    xmas = ('2025-12-22','2026-01-07')
     easter = ('2026-03-30','2026-04-06')
     return render_template("index.html", periode=(currentYear,nextYear),holidays=holidays,
         schoolYear=schoolYear,xmas=xmas,easter=easter)
