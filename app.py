@@ -1,8 +1,8 @@
 """
 JCEE App for handling DUAL/FCT schedules
 Author: A.Guardiola
-Versión: Beta (calendar updates for schoolyear 2324)
-Date: September 23
+Versión: Beta (calendar updates for schoolyear 2526)
+Date: September 25
 """
 
 import db.db as db
@@ -18,14 +18,14 @@ db.defaultHolidays()
 
 @app.route("/")
 def root():
-    currentYear=["Setembre 23","Octubre 23","Novembre 23","Desembre 23","Gener 24","Febrer 24",
-        "Març 24","Abril 24","Maig 24","Juny 24","Juliol 24","Agost 24"]
-    nextYear=["Setembre 24","Octubre 24","Novembre 24","Desembre 24","Gener 25","Febrer 25",
-        "Març 25","Abril 25","Maig 25","Juny 25","Juliol 25","Agost 25"]
+    currentYear=["Setembre 25","Octubre 25","Novembre 25","Desembre 25","Gener 26","Febrer 26",
+        "Març 26","Abril 26","Maig 26","Juny 26","Juliol 26","Agost 26"]
+    nextYear=["Setembre 26","Octubre 26","Novembre 26","Desembre 26","Gener 27","Febrer 27",
+        "Març 27","Abril 27","Maig 27","Juny 27","Juliol 27","Agost 27"]
     holidays =  db.consultarFestivos()
-    schoolYear = ('2023-09-01','2024-07-31')
-    xmas = ('2023-12-21','2024-01-07')
-    easter = ('2024-03-23','2024-04-01')
+    schoolYear = ('2025-09-01','2026-07-31')
+    xmas = ('2025-12-20','2026-01-07')
+    easter = ('2026-03-30','2026-04-06')
     return render_template("index.html", periode=(currentYear,nextYear),holidays=holidays,
         schoolYear=schoolYear,xmas=xmas,easter=easter)
 

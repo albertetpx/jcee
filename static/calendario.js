@@ -270,7 +270,7 @@ function initHolidays() {
 function initCalendar() {
 
     // TODO: BACKEND
-    let yearIni = 2023;
+    let yearIni = 2025;
     let initDate = `${yearIni}-09-01`;
     let initDay = new Date(initDate);
 
